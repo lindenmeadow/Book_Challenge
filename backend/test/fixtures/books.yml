@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  pages: 1
+  date_finished: 2020-07-30 18:08:04
+  characters: MyString
+  problem: MyText
+  solution: MyText
+  genre_rationale: MyText
+  words_learned: MyText
+  something_learned: MyText
+  question: MyText
+  genre_name: MyString
+  genre_id: 1
+
+two:
+  title: MyString
+  author: MyString
+  pages: 1
+  date_finished: 2020-07-30 18:08:04
+  characters: MyString
+  problem: MyText
+  solution: MyText
+  genre_rationale: MyText
+  words_learned: MyText
+  something_learned: MyText
+  question: MyText
+  genre_name: MyString
+  genre_id: 1
