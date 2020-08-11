@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 500px;
+  background-color: #80aaff;
+  background-image: url(reading.jpg);
+  background-size: 1100px 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.brand {
+  text-align: center;
+  color: gold;
+  text-shadow: -1px 0 whitesmoke, 0 1px whitesmoke, 1px 0 whitesmoke, 0 -1px whitesmoke;
+  font-size: 5rem;
+  padding-top: 15px;
+}
+
+.container {
+  width: 50%;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 45px;
+  color: blue;
+  text-shadow: 4px 4px 8px green;
+  margin-bottom: 10px;
+}
+
+.mainLinks {
+  width: 185px;
+  position: fixed;
+  z-index: 1;
+  background: #80aaff;
+  overflow-x: hidden;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 16px;
+}
+
+.mainLinks button {
+  font-size: 1.5em;
+  padding: .25em;
+  background-color: #70db70;
+  margin-bottom: 10px;
+  border: 1px solid #0000ff;
+  border-radius: 15px;
+  outline: none;
+}
+
+.mainLinks button:hover {
+  cursor: pointer;
+  background-color: #d6f5d6;
+}
+
+.genreSection {
+  margin-left: 200px;
+}
+
+.genreSection a {
+  text-decoration: none;
+  color: #cc3300;
+  font-size: 1.75em;
+}
+
+.genreSection a:hover {
+  text-decoration: overline underline;
+}
+
+.genreItem {
+  border: 2px solid blue;
+  border-radius: 10px;
+  background: #e6f0ff;
+  padding: 13px;
+  margin-bottom: 7px;
+  width: 70%;
+  text-align: center;
+}
+
+.genreSection button:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.addBook, .addGenre, .submitBook {
+  font-size: 1.2em;
+  background-color: #33cc33;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.editGenre, .editBook {
+  font-size: 1.2em;
+  background-color: #cccc00;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.deleteGenre, .deleteBook {
+  font-size: 1.2em;
+  background-color: #ff3300;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.form-area {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+.inputForm, .book-info {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-height: 70%;
+    overflow: auto;
+    border-radius: 20px;
+  }
+
+  .inputForm input {
+    margin-bottom: 15px;
+  }
+
+  .inputForm input[type=text] {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #cc8800;
+    border-radius: 6px;
+  }
+
+  .inputForm input[type=number], .inputForm input[type=date] {
+    width: 20%;
+    padding: 8px 15px;
+    border: 1px solid #cc8800;
+    border-radius: 6px;
+  }
+
+  .inputForm label, .book-info h4 {
+    font-size: 22px;
+  }
+
+  .book-info p {
+    font-size: 20px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+  }
+  
+.closeFormBtn {
+    background: #bbb;
+    color: black;
+    float: right; 
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .addGenre:hover, .submitBook:hover, .addBook:hover, .editBook:hover, .editGenre:hover, .closeFormBtn:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .book-info h2, .inputForm h2 {
+    text-align: center;
+    background-color: #cc6600;
+    color: white;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #80aaff;
+    color: ivory;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
