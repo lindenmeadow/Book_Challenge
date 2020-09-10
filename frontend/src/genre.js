@@ -234,3 +234,99 @@ function deleteGenre(id) {
         return false;
     }
 }
+
+/*
+Refactoring of Class, optional
+
+constructor(attr) {
+        this.name = attr.name;
+        this.id = attr.id;
+        
+        Genre.all.push(this);
+    }
+    
+
+    
+    render() {
+    
+        return `
+        <div class="genreItem">
+        <a href="#" data-name="${this.name}" data-id="${this.id}">${this.name}</a><br><br>
+        <button data-name="${this.name}" class="addBook" data-id="${this.id}">Add Book</button>
+        <button data-id="${this.id}" class="editGenre" onclick="editGenre(${this.id})"; return false;>Edit Genre Name</button>
+        <button data-id="${this.id}" class="deleteGenre" onclick="deleteGenre(${this.id})"; return false;>Delete Genre</button>
+        </div>
+        `;
+    
+    }
+
+    static listGenres() {
+       
+        document.getElementById("genreSection").innerHTML = ""
+        let genreSection = document.getElementById("genreSection")
+        fetch(BASE_URL + "/genres")
+            .then(resp => resp.json())
+            .then(genres => {
+                genres.sort()
+                
+                genreSection.innerHTML += genres.map(genre => {
+                    let newGenre = new Genre(genre)
+                    return newGenre.render()}).join('')
+    
+                let newBook = document.querySelectorAll("button.addBook")
+                newBook.forEach(addBookButton => {
+                    addBookButton.addEventListener("click", (e) => {
+                        addBook(e)
+                        e.preventDefault()
+                    })
+                })
+    
+                let booksByGenre = document.querySelectorAll("a")
+                booksByGenre.forEach(genre => {
+                    genre.addEventListener("click", (e) => {
+                        e.preventDefault()
+                        genreBooks(e.currentTarget.dataset.id)
+                    })
+                })
+            })
+    }
+
+    static addGenre() {
+        
+    
+        let genreSection = document.getElementById("genreSection")
+        fetch(BASE_URL + "/genres", {
+                method: "POST",
+                body: JSON.stringify(newGenre),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(resp => resp.json())
+            .then(genre => {
+                let newGenre = new Genre(genre)
+                genreSection.innerHTML += newGenre.render()
+            
+                let newBook = document.querySelectorAll("button.addBook")
+                newBook.forEach(addBookButton => {
+                    addBookButton.addEventListener("click", (e) => {
+                        addBook(e)
+                        e.preventDefault()
+                    })
+                })
+    
+                let booksByGenre = document.querySelectorAll("a")
+                booksByGenre.forEach(genre => {
+                    genre.addEventListener("click", (e) => {
+                        e.preventDefault()
+                        genreBooks(e.currentTarget.dataset.id)
+                    })
+                })
+    
+            })
+    
+    }
+
+
+*/
