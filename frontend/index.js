@@ -53,8 +53,3 @@ function genreBooks(e) {
         })
     })
 }
-
-function resetFormArea() {
-    let formArea = document.getElementById("form-area")
-    formArea.innerHTML = ""
-}
