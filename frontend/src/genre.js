@@ -5,7 +5,7 @@ class Genre {
 }
 
 function listGenres() {
-    resetFormArea()
+    
     document.getElementById("genreSection").innerHTML = ""
     let genreSection = document.getElementById("genreSection") 
     fetch(BASE_URL + "/genres")
