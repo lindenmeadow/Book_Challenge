@@ -260,36 +260,25 @@ constructor(attr) {
     
     }
 
-    static listGenres() {
-       
-        document.getElementById("genreSection").innerHTML = ""
-        let genreSection = document.getElementById("genreSection")
-        fetch(BASE_URL + "/genres")
-            .then(resp => resp.json())
-            .then(genres => {
-                genres.sort()
-                
-                genreSection.innerHTML += genres.map(genre => {
-                    let newGenre = new Genre(genre)
-                    return newGenre.render()}).join('')
-    
-                let newBook = document.querySelectorAll("button.addBook")
-                newBook.forEach(addBookButton => {
-                    addBookButton.addEventListener("click", (e) => {
-                        addBook(e)
-                        e.preventDefault()
-                    })
-                })
-    
-                let booksByGenre = document.querySelectorAll("a")
-                booksByGenre.forEach(genre => {
-                    genre.addEventListener("click", (e) => {
-                        e.preventDefault()
-                        genreBooks(e.currentTarget.dataset.id)
-                    })
-                })
-            })
-    }
+   
+  static listGenres() {
+    document.getElementById("genreSection").innerHTML = "";
+    let genreSection = document.getElementById("genreSection");
+    fetch(BASE_URL + "/genres")
+      .then(resp => resp.json())
+      .then(genres => {
+        genres.sort();
+
+        genreSection.innerHTML += genres
+          .map(genre => {
+            let newGenre = new Genre(genre);
+            return newGenre.render();
+          })
+          .join("");
+          newBookBtn()
+          genreBooksLink()
+    });
+  }
 
     static addGenre() {
         
@@ -328,5 +317,50 @@ constructor(attr) {
     
     }
 
+*Added functions for the buttons and links on the genre display:
+function newBookBtn() {
+    let newBook = document.querySelectorAll("button.addBook")
+    newBook.forEach((addBookButton) => {
+          addBookButton.addEventListener("click", (e) => {
+            addBook(e);
+            e.preventDefault();
+          });
+        })
+  }
+
+  function genreBooksLink() {
+    let booksByGenre = document.querySelectorAll("a")
+        booksByGenre.forEach((genre) => {
+          genre.addEventListener("click", (e) => {
+            e.preventDefault();
+            genreBooks(e.currentTarget.dataset.id);
+          });
+        })
+  }
+  
+  * Redid the addBook() function, though still having issues with it:
+  static addGenre(n) {
+    let genreName = n;
+    
+    let genreSection = document.getElementById("genreSection");
+    fetch(BASE_URL + "/genres", {
+      method: "POST",
+      body: JSON.stringify(genreName),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      }
+    })
+      .then(resp => resp.json())
+      .then(genre => {
+        genre.name = genreName;
+        let newGenre = new Genre(genre);
+        genreSection.innerHTML += newGenre.render();
+        
+        newBookBtn()
+        genreBooksLink()
+      });
+  }
+    
 
 */
