@@ -162,7 +162,7 @@ class Genre {
   }
   
   static updateGenre(id) {
-    let newName = new Genre(document.getElementById("Genre Name").value);
+    let newName = document.getElementById("Genre Name").value;
     
     fetch(BASE_URL + `/genres/${id}`, {
       method: "PATCH",
