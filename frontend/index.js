@@ -10,6 +10,8 @@ function setMainLinks() {
     `<button id="genreList">Genre List</button>
     <br>
     <button id="renderGenreForm">Add a Genre</button>
+    <br>
+    <button id="sortGenres">Sort Genres</button>
     `
 
     let genreList = document.getElementById('genreList')
@@ -17,39 +19,37 @@ function setMainLinks() {
 
     let renderGenreForm = document.getElementById('renderGenreForm')
     renderGenreForm.addEventListener('click', showGenreForm)
-}
-
-function genreBooks(e) {
-    resetFormArea();
-    document.getElementById("genreSection").innerHTML = ""
-    let genreSection = document.getElementById("genreSection")
-    fetch(BASE_URL + "/books")
-    .then(resp => resp.json())
-    .then(books => {
-        let booksToGenre = books.filter(book => {
-            let bookGenreId = book.genre_id.toString()
-            let genreId = e
-            return bookGenreId.match(genreId)
-        })
-
-        if (booksToGenre == 0) {
-            genreSection.innerHTML = `<h3>You haven't added any books to this genre yet.</h3>`
-        } else {
-            genreSection.innerHTML += booksToGenre.map(book => `
-            <div class="genreItem">
-            <a href="#" data-id="${book.id}"> ${book.title}</a><br><br>
-            <button data-id="${book.id}"class="editBook" onclick="editBook(${book.id})" class="editBook">Edit Book</button>
-            <button data-id="${book.id}" class="deleteBook" onclick="deleteBook(${book.id})" class="deleteBook">Delete Book</button>
-            </div>
-        `).join("");
-        }
-        
-        let renderBooks = document.querySelectorAll("a")
-        renderBooks.forEach(book => {
-            book.addEventListener("click", (e) => {
-                e.preventDefault()
-                renderBook(e.currentTarget.dataset.id)
-            })
+    
+    let sortGenres = document.getElementById('sortGenres')
+    sortGenres.addEventListener('click', () => {
+        fetch(BASE_URL + "/genres")
+        .then(resp => resp.json())
+        .then(genres => {
+            let genreSection = document.getElementById('genreSection')
+            genres.sort(function(a, b) {
+                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                  return -1;
+                }
+                if (nameA > nameB) {
+                  return 1;
+                }
+              
+                // names must be equal
+                return 0;
+              });
+          genreSection.innerHTML = "";
+          genreSection.innerHTML += genres
+          .map(genre => {
+            let newGenre = new Genre(genre);
+            return newGenre.render();
+          })
+          .join("");
+            
+            console.log(genres)
         })
     })
 }
+
+
