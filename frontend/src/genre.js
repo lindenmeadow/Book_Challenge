@@ -1,4 +1,4 @@
-//Refactored Genre class, with functions reworked as class methods. Still in progress
+//Refactored Genre class, with functions reworked as class methods. 
 
 class Genre {
   
