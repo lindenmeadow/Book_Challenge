@@ -25,8 +25,6 @@ class Genre {
     fetch(BASE_URL + "/genres")
       .then(resp => resp.json())
       .then(genres => {
-        genres.sort();
-
         genreSection.innerHTML += genres
           .map(genre => {
             let newGenre = new Genre(genre);
