@@ -211,6 +211,28 @@ class Genre {
 }
 
 
+Genre.all = [];
+
+
+function newBookBtn() {
+    let newBook = document.querySelectorAll("button.addBook")
+    newBook.forEach((addBookButton) => {
+          addBookButton.addEventListener("click", (e) => {
+            addBook(e);
+            e.preventDefault();
+          });
+        })
+  }
+
+  function genreBooksLink() {
+    let booksByGenre = document.querySelectorAll("a")
+        booksByGenre.forEach((genre) => {
+          genre.addEventListener("click", (e) => {
+            e.preventDefault();
+            genreBooks(e.currentTarget.dataset.id);
+          });
+        })
+  }
 
 
 
